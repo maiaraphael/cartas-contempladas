@@ -21,7 +21,7 @@ export default function Header() {
         </nav>
         <div className="header-actions">
           <Link to="/login" className="btn btn-outline" style={{ padding: '0.4rem 1rem', display: 'flex', gap: '5px' }}>
-            <UserCircle size={18} /> Área do Cliente
+            <UserCircle size={18} /> Login
           </Link>
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Gostaria de falar com um especialista sobre cartas contempladas.')}`}
