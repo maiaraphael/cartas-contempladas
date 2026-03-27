@@ -35,7 +35,7 @@ export default function TrustSection() {
         
         <div className="grid grid-cols-4 trust-grid">
           {diffs.map((diff, index) => (
-            <div key={index} className="trust-card text-center">
+            <div key={index} className="trust-card">
               <div className="icon-wrapper">
                 {diff.icon}
               </div>

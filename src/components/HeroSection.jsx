@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, ArrowRight, TrendingDown, CheckCircle } from 'lucide-react';
+import { Search, ArrowRight, CheckCircle, ShieldCheck } from 'lucide-react';
 import './HeroSection.css';
 
 export default function HeroSection() {
@@ -15,34 +15,55 @@ export default function HeroSection() {
       <div className="container hero-inner">
         {/* Left: Text Content */}
         <div className="hero-text">
+          <div className="hero-topline">
+            <span className="hero-topline-bar"></span>
+            <span className="hero-topline-text">Consórcio Contemplado · Brasil</span>
+          </div>
+
           <div className="hero-badge">
-            <TrendingDown size={16} />
-            <span>Economize até 40% vs. financiamento tradicional</span>
+            <ShieldCheck size={14} />
+            <span>Processo 100% Jurídico e Transparente</span>
           </div>
 
           <h1 className="hero-title">
-            Conquiste seu <span className="highlight">Patrimônio</span> com
-            Consórcio Contemplado
+            Seu <span className="highlight">Patrimônio</span>{' '}
+            sem Juros.<br />Com Segurança.
           </h1>
 
+          <div className="hero-divider"></div>
+
           <p className="hero-subtitle">
-            Cartas de consórcio contempladas com transferência segura, processo
-            100% transparente e os melhores valores do Brasil.
+            Adquira cartas de consórcio contempladas com transferência
+            jurídica garantida. Economize até 40% em relação ao
+            financiamento tradicional.
           </p>
 
           <ul className="hero-checks">
-            <li><CheckCircle size={18} /> Sem juros abusivos de financiamento</li>
-            <li><CheckCircle size={18} /> Transferência jurídica garantida</li>
-            <li><CheckCircle size={18} /> Crédito disponível imediatamente</li>
+            <li><CheckCircle size={17} /> Sem juros abusivos de financiamento</li>
+            <li><CheckCircle size={17} /> Transferência jurídica garantida</li>
+            <li><CheckCircle size={17} /> Crédito disponível imediatamente</li>
           </ul>
 
           <div className="hero-actions">
             <a href="#cartas" className="btn btn-hero-primary">
-              Ver Cartas Disponíveis <ArrowRight size={20} />
+              Ver Cartas Disponíveis <ArrowRight size={18} />
             </a>
             <a href="#como-funciona" className="btn btn-hero-outline">
               Como Funciona
             </a>
+          </div>
+
+          <div className="hero-proof">
+            <div className="hero-proof-avatars">
+              <div className="hero-proof-avatar">MA</div>
+              <div className="hero-proof-avatar">JC</div>
+              <div className="hero-proof-avatar">RS</div>
+              <div className="hero-proof-avatar">PT</div>
+            </div>
+            <div className="hero-proof-text">
+              <strong>+1.400 clientes satisfeitos</strong>
+              97% de taxa de aprovação
+            </div>
           </div>
         </div>
 
@@ -86,21 +107,16 @@ export default function HeroSection() {
               </select>
             </div>
             <button type="button" className="btn btn-hero-primary search-btn">
-              <Search size={20} />
+              <Search size={18} />
               Buscar Cartas Agora
             </button>
           </form>
 
           <div className="card-footer-note">
-            <CheckCircle size={14} color="#22c55e" />
+            <CheckCircle size={13} color="#22c55e" />
             <span>Atendimento personalizado em até 2h</span>
           </div>
         </div>
-      </div>
-
-      {/* Floating scroll indicator */}
-      <div className="scroll-indicator">
-        <div className="scroll-dot"></div>
       </div>
     </section>
   );

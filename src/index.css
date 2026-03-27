@@ -1,35 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Modern Orange Palette */
+  /* Brand Palette */
   --brand-primary: #F97316;
-  /* Laranja Moderno (Tailwind Orange 500) */
   --brand-primary-hover: #EA580C;
-  /* Orange 600 */
 
-  --brand-light: #eff6ff;
-  /* Fundo azul bem claro (Blue 50) */
-  --brand-light-hover: #dbeafe;
-  /* Azul claro para interações (Blue 100) */
+  --brand-light: #fff7ed;
+  --brand-light-hover: #fed7aa;
 
-  --brand-dark: #1E293B;
-  /* Cinza escuro moderno para textos/logos */
-  --brand-darker: #0F172A;
+  --brand-dark: #0d1117;
+  --brand-darker: #111827;
 
-  --ice-white: #FAFAFA;
-  /* Branco Gelo (Background base) */
+  --ice-white: #f8f9fa;
   --pure-white: #FFFFFF;
 
-  --text-dark: #334155;
-  --text-slate: #64748B;
-  --border-light: #E2E8F0;
+  --text-dark: #1f2937;
+  --text-slate: #6b7280;
+  --border-light: #e5e7eb;
 
   --radius: 8px;
   --radius-lg: 12px;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-soft: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.01);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.1), 0 4px 10px -4px rgb(0 0 0 / 0.06);
+  --shadow-soft: 0 20px 50px -5px rgb(0 0 0 / 0.08), 0 8px 20px -6px rgb(0 0 0 / 0.04);
 }
 
 * {
@@ -105,14 +99,16 @@ button {
 }
 
 .title {
-  font-weight: 700;
+  font-weight: 900;
   color: var(--brand-dark);
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
   color: var(--text-slate);
-  font-size: 1.125rem;
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
 .card {

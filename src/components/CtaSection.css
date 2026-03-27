@@ -1,49 +1,73 @@
 .cta-section {
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
-  padding: 6rem 0;
+  background: #0d1117;
+  padding: 7rem 0;
   position: relative;
   overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(249,115,22,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 50%, rgba(180,83,9,0.06) 0%, transparent 60%);
 }
 
 .cta-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.2;
+  filter: blur(100px);
+  opacity: 0.15;
 }
 
 .cta-blob-1 {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   background: #F97316;
-  top: -150px;
-  left: -100px;
+  top: -200px;
+  left: -150px;
 }
 
 .cta-blob-2 {
-  width: 300px;
-  height: 300px;
-  background: #3b82f6;
-  bottom: -100px;
-  right: -50px;
+  width: 350px;
+  height: 350px;
+  background: #b45309;
+  bottom: -150px;
+  right: -80px;
 }
 
 .cta-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 5rem;
   align-items: center;
   position: relative;
   z-index: 2;
 }
 
-.cta-title {
-  font-size: 2.75rem;
+.cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(249,115,22,0.12);
+  border: 1px solid rgba(249,115,22,0.3);
+  color: #fb923c;
+  font-size: 0.75rem;
   font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.375rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.cta-title {
+  font-size: 3.25rem;
+  font-weight: 900;
   color: white;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.03em;
 }
 
 .cta-title span {
@@ -51,10 +75,10 @@
 }
 
 .cta-subtitle {
-  color: rgba(255,255,255,0.7);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  margin-bottom: 2rem;
+  color: rgba(255,255,255,0.55);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
 }
 
 .cta-actions {
@@ -66,61 +90,90 @@
 .btn-cta-whatsapp {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: #25d366;
+  gap: 0.625rem;
+  background: #22c55e;
   color: white;
-  padding: 0.875rem 1.75rem;
-  border-radius: 50px;
+  padding: 1rem 2rem;
+  border-radius: 6px;
   font-weight: 700;
+  font-size: 0.9375rem;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.25);
   text-decoration: none;
 }
 
 .btn-cta-whatsapp:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 35px rgba(37, 211, 102, 0.4);
+  background: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.35);
 }
 
 .cta-image-block {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .cta-floating-card {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px;
-  padding: 1.25rem 1.5rem;
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-floating-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #F97316;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: bottom;
+}
+
+.cta-floating-card:hover::before {
+  transform: scaleY(1);
 }
 
 .cta-floating-card:nth-child(2) {
-  margin-left: 2rem;
+  margin-left: 2.5rem;
 }
 
 .cta-floating-card:hover {
-  background: rgba(255,255,255,0.14);
-  transform: translateX(5px);
+  background: rgba(255,255,255,0.07);
+  transform: translateX(6px);
 }
 
 .floating-label {
-  color: rgba(255,255,255,0.6);
-  font-size: 0.8125rem;
-  margin-bottom: 0.25rem;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
 }
 
 .floating-value {
-  font-size: 1.375rem;
-  font-weight: 800;
+  font-size: 1.625rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.03em;
+}
+
+.floating-value span {
   color: #F97316;
 }
 
 @media (max-width: 768px) {
-  .cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .cta-title { font-size: 2rem; }
+  .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .cta-title { font-size: 2.25rem; }
   .cta-floating-card:nth-child(2) { margin-left: 0; }
   .cta-actions { flex-direction: column; }
 }

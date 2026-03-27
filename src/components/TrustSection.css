@@ -1,10 +1,12 @@
 .trust-section {
-  background-color: var(--pure-white);
+  background-color: white;
   padding: 6rem 0;
+  position: relative;
 }
 
 .trust-header {
-  margin-bottom: 4rem;
+  margin-bottom: 4.5rem;
+  text-align: center;
 }
 
 .text-center {
@@ -12,45 +14,82 @@
 }
 
 .trust-grid {
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .trust-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  padding: 2.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.trust-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #F97316;
+  transition: width 0.35s ease;
+}
+
+.trust-card:hover::after {
+  width: 100%;
+}
+
+.trust-card:hover {
+  background: white;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+  transform: translateY(-5px);
 }
 
 .icon-wrapper {
-  background: rgba(249, 115, 22, 0.1); /* Tailwind Orange 500 alpha */
-  padding: 1.5rem;
-  border-radius: 50%;
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px solid rgba(249,115,22,0.2);
+  padding: 1rem;
+  border-radius: 12px;
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  color: #F97316;
 }
 
 .trust-card:hover .icon-wrapper {
-  transform: scale(1.1);
-  background: rgba(249, 115, 22, 0.2);
+  background: rgba(249, 115, 22, 0.14);
+  transform: scale(1.05);
 }
 
 .trust-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--brand-dark);
-  margin-bottom: 1rem;
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: #0d1117;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
 }
 
 .trust-desc {
-  color: var(--text-slate);
-  line-height: 1.6;
+  color: #6b7280;
+  line-height: 1.7;
+  font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-  .trust-header h2 {
-    font-size: 2rem;
-  }
+@media (max-width: 1024px) {
+  .trust-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .trust-grid { grid-template-columns: 1fr; }
+  .trust-header h2 { font-size: 2rem; }
 }

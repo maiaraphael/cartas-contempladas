@@ -1,5 +1,5 @@
 .inventory-bg {
-  background-color: var(--ice-white);
+  background-color: white;
   padding: 6rem 0;
 }
 
@@ -7,80 +7,121 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   flex-wrap: wrap;
   gap: 1.5rem;
 }
 
+.inventory-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(249, 115, 22, 0.08);
+  color: #c2410c;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.375rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(249,115,22,0.2);
+  display: block;
+  width: fit-content;
+}
+
 .section-title {
-  font-size: 2.25rem;
-  margin-bottom: 0.5rem;
-  color: var(--brand-dark);
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 0.35rem;
+  color: #0d1117;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 .filters-bar {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: 50px;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+  border: 1px solid #e5e7eb;
 }
 
 .filter-label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-slate);
-  font-weight: 500;
-  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.8125rem;
 }
 
 .filter-select {
   border: none;
   background: transparent;
-  font-weight: 600;
-  color: var(--brand-dark);
+  font-weight: 700;
+  color: #0d1117;
   padding: 0;
   width: auto;
   cursor: pointer;
+  font-size: 0.875rem;
 }
 
 .filter-select:focus {
   box-shadow: none;
+  outline: none;
 }
 
 .inventory-grid {
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .inventory-card {
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
-  border-top: 4px solid var(--brand-primary);
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.inventory-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #F97316;
 }
 
 .inventory-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--brand-primary-hover);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  border-color: rgba(249,115,22,0.3);
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid var(--border-light);
-  background-color: rgba(248, 250, 252, 0.5);
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+  background-color: #fafafa;
 }
 
 .admin-name {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-slate);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #9ca3af;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 .card-body {
@@ -94,65 +135,77 @@
 
 .credit-value .label {
   display: block;
-  font-size: 0.875rem;
-  color: var(--text-slate);
+  font-size: 0.75rem;
+  color: #9ca3af;
   margin-bottom: 0.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .credit-value .value {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--brand-dark);
-  letter-spacing: -0.02em;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #0d1117;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 .financial-details {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .detail-item {
   flex: 1;
-  background-color: var(--ice-white);
+  background-color: #f8f9fa;
   padding: 0.75rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  border: 1px solid #f3f4f6;
 }
 
 .detail-item .label {
   display: block;
-  font-size: 0.75rem;
-  color: var(--text-slate);
+  font-size: 0.7rem;
+  color: #9ca3af;
   margin-bottom: 0.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .detail-item .detail-value {
-  font-weight: 600;
-  color: var(--text-dark);
+  font-weight: 700;
+  color: #374151;
+  font-size: 0.9rem;
 }
 
 .economy-section {
-  background-color: #FFF7ED; /* light orange */
-  padding: 1rem;
-  border-radius: var(--radius);
-  border: 1px dashed #FDBA74; /* orange-300 */
+  background-color: #fff7ed;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #fed7aa;
 }
 
 .economy-label {
-  font-size: 0.75rem;
-  color: #C2410C; /* orange-700 */
+  font-size: 0.7rem;
+  color: #c2410c;
   margin-bottom: 0.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .economy-value {
   font-size: 0.875rem;
-  color: #9A3412; /* orange-800 */
+  color: #9a3412;
 }
 
 .economy-value strong {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   display: block;
+  font-weight: 800;
 }
 
 .w-100 {
@@ -161,8 +214,12 @@
 
 .card-footer {
   padding: 1.25rem 1.5rem;
-  border-top: 1px solid var(--border-light);
-  background-color: rgba(248, 250, 252, 0.5);
+  border-top: 1px solid #f3f4f6;
+  background-color: #fafafa;
+}
+
+@media (max-width: 1024px) {
+  .inventory-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -170,4 +227,6 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  .inventory-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 2rem; }
 }
