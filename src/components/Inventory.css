@@ -1,0 +1,173 @@
+.inventory-bg {
+  background-color: var(--ice-white);
+  padding: 6rem 0;
+}
+
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--brand-dark);
+}
+
+.filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-slate);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.filter-select {
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  color: var(--brand-dark);
+  padding: 0;
+  width: auto;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  box-shadow: none;
+}
+
+.inventory-grid {
+  gap: 2rem;
+}
+
+.inventory-card {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--brand-primary);
+}
+
+.inventory-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--brand-primary-hover);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+  background-color: rgba(248, 250, 252, 0.5);
+}
+
+.admin-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-slate);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-body {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.credit-value {
+  margin-bottom: 1.5rem;
+}
+
+.credit-value .label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-slate);
+  margin-bottom: 0.25rem;
+}
+
+.credit-value .value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--brand-dark);
+  letter-spacing: -0.02em;
+}
+
+.financial-details {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-item {
+  flex: 1;
+  background-color: var(--ice-white);
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
+}
+
+.detail-item .label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-slate);
+  margin-bottom: 0.25rem;
+}
+
+.detail-item .detail-value {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.economy-section {
+  background-color: #FFF7ED; /* light orange */
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px dashed #FDBA74; /* orange-300 */
+}
+
+.economy-label {
+  font-size: 0.75rem;
+  color: #C2410C; /* orange-700 */
+  margin-bottom: 0.25rem;
+}
+
+.economy-value {
+  font-size: 0.875rem;
+  color: #9A3412; /* orange-800 */
+}
+
+.economy-value strong {
+  font-size: 1rem;
+  display: block;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.card-footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border-light);
+  background-color: rgba(248, 250, 252, 0.5);
+}
+
+@media (max-width: 768px) {
+  .inventory-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

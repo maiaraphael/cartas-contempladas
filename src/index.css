@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Modern Orange Palette */
+  --brand-primary: #F97316;
+  /* Laranja Moderno (Tailwind Orange 500) */
+  --brand-primary-hover: #EA580C;
+  /* Orange 600 */
+
+  --brand-light: #eff6ff;
+  /* Fundo azul bem claro (Blue 50) */
+  --brand-light-hover: #dbeafe;
+  /* Azul claro para interações (Blue 100) */
+
+  --brand-dark: #1E293B;
+  /* Cinza escuro moderno para textos/logos */
+  --brand-darker: #0F172A;
+
+  --ice-white: #FAFAFA;
+  /* Branco Gelo (Background base) */
+  --pure-white: #FFFFFF;
+
+  --text-dark: #334155;
+  --text-slate: #64748B;
+  --border-light: #E2E8F0;
+
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-soft: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.01);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--ice-white);
+  color: var(--text-dark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  border: none;
+  cursor: pointer;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--brand-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--brand-light);
+  border-color: var(--brand-primary-hover);
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.title {
+  font-weight: 700;
+  color: var(--brand-dark);
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: var(--text-slate);
+  font-size: 1.125rem;
+}
+
+.card {
+  background: var(--pure-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* Grids */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .grid-cols-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .grid-cols-3,
+  .grid-cols-4,
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+/* Status Badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-contemplada {
+  background-color: var(--brand-light);
+  color: var(--brand-primary-hover);
+}
+
+.badge-economy {
+  background-color: #FEF3C7;
+  color: #92400E;
+}

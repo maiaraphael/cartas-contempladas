@@ -1,0 +1,128 @@
+.howitworks {
+  background: var(--brand-light);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  background: rgba(249, 115, 22, 0.12);
+  color: #ea580c;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.section-heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--brand-dark);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.heading-accent {
+  color: var(--brand-primary);
+}
+
+.section-subheading {
+  color: var(--text-slate);
+  font-size: 1.0625rem;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+
+.step-card {
+  background: var(--pure-white);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  border: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.step-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.step-icon-wrap {
+  background: rgba(249, 115, 22, 0.1);
+  color: var(--brand-primary);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s;
+}
+
+.step-card:hover .step-icon-wrap {
+  transform: scale(1.1);
+  background: rgba(249, 115, 22, 0.2);
+}
+
+.step-num {
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(249, 115, 22, 0.15);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.step-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 0.75rem;
+}
+
+.step-desc {
+  font-size: 0.9rem;
+  color: var(--text-slate);
+  line-height: 1.6;
+}
+
+.step-arrow {
+  position: absolute;
+  right: -1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--brand-primary);
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .step-arrow { display: none; }
+  .section-heading { font-size: 2rem; }
+}
+
+@media (max-width: 640px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,115 @@
+.cadastro-cartas {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-card {
+  background: var(--pure-white);
+  padding: 0;
+}
+
+.form-section {
+  padding: 2rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.section-title {
+  font-size: 1.125rem;
+  color: var(--brand-dark);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.form-group input, 
+.form-group select {
+  padding: 0.875rem;
+  font-size: 1rem;
+}
+
+.upload-area {
+  border: 2px dashed var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: var(--ice-white);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.upload-area:hover {
+  border-color: var(--brand-primary);
+  background-color: rgba(249, 115, 22, 0.05); /* Tailwind Orange 500 alpha */
+}
+
+.upload-icon {
+  color: var(--brand-primary);
+  margin-bottom: 1rem;
+}
+
+.upload-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.upload-text span {
+  color: var(--brand-primary);
+  text-decoration: underline;
+}
+
+.upload-hint {
+  font-size: 0.75rem;
+  color: var(--text-slate);
+  margin-top: 0.5rem;
+}
+
+.border-t {
+  border-top: 1px solid var(--border-light);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background-color: var(--ice-white);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.toast-msg {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.toast-success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+.toast-error   { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; }
+

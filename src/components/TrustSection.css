@@ -1,0 +1,56 @@
+.trust-section {
+  background-color: var(--pure-white);
+  padding: 6rem 0;
+}
+
+.trust-header {
+  margin-bottom: 4rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.trust-grid {
+  gap: 3rem;
+}
+
+.trust-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-wrapper {
+  background: rgba(249, 115, 22, 0.1); /* Tailwind Orange 500 alpha */
+  padding: 1.5rem;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.trust-card:hover .icon-wrapper {
+  transform: scale(1.1);
+  background: rgba(249, 115, 22, 0.2);
+}
+
+.trust-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 1rem;
+}
+
+.trust-desc {
+  color: var(--text-slate);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .trust-header h2 {
+    font-size: 2rem;
+  }
+}
