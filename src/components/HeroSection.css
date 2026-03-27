@@ -2,7 +2,7 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1e293b 100%);
+  background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #111827 100%);
   padding: 6rem 0 7rem;
   color: white;
   min-height: 90vh;
@@ -31,7 +31,7 @@
 .blob-2 {
   width: 350px;
   height: 350px;
-  background: #3b82f6;
+  background: #b45309;
   bottom: -100px;
   left: -80px;
   animation-delay: -3s;
