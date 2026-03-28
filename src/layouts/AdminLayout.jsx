@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FileText, Users, LogOut, ShieldCheck, Truck, UserCog } from 'lucide-react';
+import { LayoutDashboard, FileText, Users, LogOut, ShieldCheck, Truck, UserCog, ClipboardList } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import './AdminLayout.css';
 
@@ -45,6 +45,11 @@ export default function AdminLayout() {
             <li>
               <Link to="/admin/cartas" className={`nav-item ${isActive('/admin/cartas')}`}>
                 <FileText size={20} /> Cadastrar Cartas
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/gestao-cartas" className={`nav-item ${isActive('/admin/gestao-cartas')}`}>
+                <ClipboardList size={20} /> Gestão de Cartas
               </Link>
             </li>
             <li>

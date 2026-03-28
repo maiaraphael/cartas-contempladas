@@ -9,6 +9,7 @@ import RoleRedirect from './pages/RoleRedirect';
 import Dashboard from './pages/admin/Dashboard';
 import CadastroCartas from './pages/admin/CadastroCartas';
 import GestaoClientes from './pages/admin/GestaoClientes';
+import GestaoCartas from './pages/admin/GestaoCartas';
 import Fornecedores from './pages/admin/Fornecedores';
 import Usuarios from './pages/admin/Usuarios';
 
@@ -39,6 +40,7 @@ function App() {
         >
           <Route index element={<Dashboard />} />
           <Route path="cartas" element={<CadastroCartas />} />
+          <Route path="gestao-cartas" element={<GestaoCartas />} />
           <Route path="clientes" element={<GestaoClientes />} />
           <Route path="fornecedores" element={<Fornecedores />} />
           <Route path="usuarios" element={<Usuarios />} />
