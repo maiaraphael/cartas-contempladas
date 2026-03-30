@@ -12,6 +12,27 @@ export default function Inventory() {
   const [ordenacao, setOrdenacao] = useState('menor-entrada');
   const [cartas, setCartas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filtroValor, setFiltroValor] = useState(null);
+  const [filtroSegmento, setFiltroSegmento] = useState(null);
+  const [filtroAdmin, setFiltroAdmin] = useState(null);
+  // Captura filtros da query string do hash (ex: #cartas?valor=50k&segmento=imoveis&admin=uniao)
+  useEffect(() => {
+    function getFiltrosFromHash() {
+      if (window.location.hash.startsWith('#cartas?')) {
+        const params = new URLSearchParams(window.location.hash.split('?')[1]);
+        setFiltroValor(params.get('valor'));
+        setFiltroSegmento(params.get('segmento'));
+        setFiltroAdmin(params.get('admin'));
+      } else {
+        setFiltroValor(null);
+        setFiltroSegmento(null);
+        setFiltroAdmin(null);
+      }
+    }
+    getFiltrosFromHash();
+    window.addEventListener('hashchange', getFiltrosFromHash);
+    return () => window.removeEventListener('hashchange', getFiltrosFromHash);
+  }, []);
 
   useEffect(() => {
     async function fetchCartas() {
@@ -25,11 +46,36 @@ export default function Inventory() {
     fetchCartas();
   }, []);
 
-  const sortedCartas = [...cartas].sort((a, b) => {
-    if (ordenacao === 'menor-entrada') return a.entrada - b.entrada;
-    if (ordenacao === 'maior-credito') return b.credito - a.credito;
-    return 0;
-  });
+
+  // Filtros combinados
+  function filtrarCarta(carta) {
+    // Valor
+    if (filtroValor) {
+      const v = Number(carta.credito);
+      switch (filtroValor) {
+        case '50k': if (!(v <= 50000)) return false; break;
+        case '100k': if (!(v > 50000 && v <= 100000)) return false; break;
+        case '300k': if (!(v > 100000 && v <= 300000)) return false; break;
+        case '500k': if (!(v > 300000 && v <= 500000)) return false; break;
+        case '1m': if (!(v > 500000)) return false; break;
+        default: break;
+      }
+    }
+    // Segmento
+    if (filtroSegmento && carta.segmento !== filtroSegmento) return false;
+    // Administradora
+    if (filtroAdmin && filtroAdmin !== 'outro' && carta.administradora.toLowerCase().indexOf('união') === -1) return false;
+    if (filtroAdmin === 'outro' && carta.administradora.toLowerCase().indexOf('união') !== -1) return false;
+    return true;
+  }
+
+  const sortedCartas = [...cartas]
+    .filter(filtrarCarta)
+    .sort((a, b) => {
+      if (ordenacao === 'menor-entrada') return a.entrada - b.entrada;
+      if (ordenacao === 'maior-credito') return b.credito - a.credito;
+      return 0;
+    });
 
   function handleInteresse(carta) {
     const msg = encodeURIComponent(

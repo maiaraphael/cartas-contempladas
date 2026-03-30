@@ -5,6 +5,25 @@ import './HeroSection.css';
 export default function HeroSection() {
   const [activeTab, setActiveTab] = useState('imoveis');
 
+  const [valorCredito, setValorCredito] = useState("");
+  const [administradora, setAdministradora] = useState("uniao");
+
+  // Segmento: imoveis ou veiculos
+  // Usa activeTab
+
+  function handleBuscarCartas() {
+    if (!valorCredito) {
+      alert("Selecione um valor de crédito desejado.");
+      return;
+    }
+    // Monta query string com todos filtros
+    const params = new URLSearchParams();
+    params.set('valor', valorCredito);
+    params.set('segmento', activeTab);
+    params.set('admin', administradora);
+    window.location.hash = `cartas?${params.toString()}`;
+  }
+
   return (
     <section className="hero">
       {/* Animated background blobs */}
@@ -91,10 +110,10 @@ export default function HeroSection() {
             </button>
           </div>
 
-          <form className="search-form">
+          <form className="search-form" onSubmit={e => e.preventDefault()}>
             <div className="form-group">
               <label>Valor do Crédito Desejado</label>
-              <select defaultValue="">
+              <select value={valorCredito} onChange={e => setValorCredito(e.target.value)}>
                 <option value="" disabled>Selecione um valor</option>
                 <option value="50k">Até R$ 50.000</option>
                 <option value="100k">R$ 50.000 a R$ 100.000</option>
@@ -105,11 +124,13 @@ export default function HeroSection() {
             </div>
             <div className="form-group">
               <label>Administradora</label>
-              <select defaultValue="uniao">
+              <select value={administradora} onChange={e => setAdministradora(e.target.value)}>
                 <option value="uniao">Consórcio União</option>
+                <option value="outro">Outra Administradora</option>
               </select>
             </div>
-            <button type="button" className="btn btn-hero-primary search-btn">
+            {/* Segmento já está nos tabs (activeTab) */}
+            <button type="button" className="btn btn-hero-primary search-btn" onClick={handleBuscarCartas}>
               <Search size={18} />
               Buscar Cartas Agora
             </button>
