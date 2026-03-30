@@ -3,6 +3,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 import LandingPage from './pages/LandingPage';
+import BuscaCartas from './pages/BuscaCartas';
 import Login from './pages/Login';
 import RoleRedirect from './pages/RoleRedirect';
 
@@ -26,6 +27,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<LandingPage />} />
         </Route>
+        <Route path="/busca-cartas" element={<BuscaCartas />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/redirect" element={<RoleRedirect />} />

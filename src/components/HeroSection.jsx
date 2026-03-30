@@ -21,7 +21,7 @@ export default function HeroSection() {
     params.set('valor', valorCredito);
     params.set('segmento', activeTab);
     params.set('admin', administradora);
-    window.location.hash = `cartas?${params.toString()}`;
+    window.location.href = `/busca-cartas?${params.toString()}`;
   }
 
   return (

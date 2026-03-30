@@ -8,31 +8,19 @@ const formatCurrency = v =>
 
 const WHATSAPP_NUMBER = '5511999999999'; // Altere para o numero real
 
-export default function Inventory() {
+export default function Inventory({ filtros = {}, enableFiltros = false }) {
   const [ordenacao, setOrdenacao] = useState('menor-entrada');
   const [cartas, setCartas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filtroValor, setFiltroValor] = useState(null);
-  const [filtroSegmento, setFiltroSegmento] = useState(null);
-  const [filtroAdmin, setFiltroAdmin] = useState(null);
-  // Captura filtros da query string do hash (ex: #cartas?valor=50k&segmento=imoveis&admin=uniao)
+  const [filtroValor, setFiltroValor] = useState(filtros.valor || null);
+  const [filtroSegmento, setFiltroSegmento] = useState(filtros.segmento || null);
+  const [filtroAdmin, setFiltroAdmin] = useState(filtros.admin || null);
+  // Atualiza filtros se vierem via props (ex: página de busca)
   useEffect(() => {
-    function getFiltrosFromHash() {
-      if (window.location.hash.startsWith('#cartas?')) {
-        const params = new URLSearchParams(window.location.hash.split('?')[1]);
-        setFiltroValor(params.get('valor'));
-        setFiltroSegmento(params.get('segmento'));
-        setFiltroAdmin(params.get('admin'));
-      } else {
-        setFiltroValor(null);
-        setFiltroSegmento(null);
-        setFiltroAdmin(null);
-      }
-    }
-    getFiltrosFromHash();
-    window.addEventListener('hashchange', getFiltrosFromHash);
-    return () => window.removeEventListener('hashchange', getFiltrosFromHash);
-  }, []);
+    if (filtros.valor !== undefined) setFiltroValor(filtros.valor);
+    if (filtros.segmento !== undefined) setFiltroSegmento(filtros.segmento);
+    if (filtros.admin !== undefined) setFiltroAdmin(filtros.admin);
+  }, [filtros.valor, filtros.segmento, filtros.admin]);
 
   useEffect(() => {
     async function fetchCartas() {
@@ -103,21 +91,43 @@ export default function Inventory() {
             <h2 className="title section-title">Cartas Contempladas Disponíveis</h2>
             <p className="subtitle">Ofertas verificadas prontas para transferência imediata.</p>
           </div>
-
-          <div className="filters-bar card">
-            <div className="filter-label">
-              <SlidersHorizontal size={20} />
-              <span>Ordenar por:</span>
+          {enableFiltros && (
+            <div className="filters-bar card" style={{marginTop: 16}}>
+              <div className="filter-label">
+                <SlidersHorizontal size={20} />
+                <span>Ordenar por:</span>
+              </div>
+              <select
+                className="filter-select"
+                value={ordenacao}
+                onChange={e => setOrdenacao(e.target.value)}
+              >
+                <option value="menor-entrada">Menor Valor de Entrada</option>
+                <option value="maior-credito">Maior Crédito</option>
+              </select>
+              {/* Filtros dinâmicos */}
+              <div style={{marginLeft: 24, display: 'flex', gap: 12}}>
+                <select value={filtroValor || ''} onChange={e => setFiltroValor(e.target.value)}>
+                  <option value="">Todos os valores</option>
+                  <option value="50k">Até R$ 50.000</option>
+                  <option value="100k">R$ 50.000 a R$ 100.000</option>
+                  <option value="300k">R$ 100.000 a R$ 300.000</option>
+                  <option value="500k">R$ 300.000 a R$ 500.000</option>
+                  <option value="1m">Acima de R$ 500.000</option>
+                </select>
+                <select value={filtroSegmento || ''} onChange={e => setFiltroSegmento(e.target.value)}>
+                  <option value="">Todos os segmentos</option>
+                  <option value="imoveis">Imóveis</option>
+                  <option value="veiculos">Veículos</option>
+                </select>
+                <select value={filtroAdmin || ''} onChange={e => setFiltroAdmin(e.target.value)}>
+                  <option value="">Todas administradoras</option>
+                  <option value="uniao">Consórcio União</option>
+                  <option value="outro">Outra</option>
+                </select>
+              </div>
             </div>
-            <select
-              className="filter-select"
-              value={ordenacao}
-              onChange={e => setOrdenacao(e.target.value)}
-            >
-              <option value="menor-entrada">Menor Valor de Entrada</option>
-              <option value="maior-credito">Maior Crédito</option>
-            </select>
-          </div>
+          )}
         </div>
 
         {loading ? (
