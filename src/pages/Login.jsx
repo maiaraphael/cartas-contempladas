@@ -36,8 +36,7 @@ export default function Login() {
       const msg = err.message || ''
       if (msg.includes('Invalid login credentials')) {
         setError('E-mail ou senha incorretos.')
-      } else if (msg.includes('Email not confirmed')) {
-        setError('Confirme seu e-mail antes de entrar.')
+      // Removido: não bloquear login por e-mail não confirmado
       } else {
         setError(msg || 'Erro ao fazer login. Tente novamente.')
       }
