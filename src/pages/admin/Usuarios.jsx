@@ -15,6 +15,26 @@ export default function Usuarios() {
   const [form, setForm] = useState({ full_name: '', email: '', role: 'vendedor', phone: '', password: '' });
   const [editingId, setEditingId] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
+    // Excluir usuário (apenas admin)
+    async function handleDeleteUser(user) {
+      if (!window.confirm(`Tem certeza que deseja excluir o usuário ${user.full_name}? Essa ação não pode ser desfeita.`)) return;
+      setDeletingId(user.id);
+      // Remove do auth (admin API) e do profile
+      try {
+        // Remove do auth.users (se possível)
+        if (supabase.auth.admin && supabase.auth.admin.deleteUser) {
+          await supabase.auth.admin.deleteUser(user.id);
+        }
+        // Remove do profiles
+        await supabase.from('profiles').delete().eq('id', user.id);
+        showToast('success', 'Usuário excluído com sucesso!');
+        fetchUsuarios();
+      } catch (err) {
+        showToast('error', err.message || 'Erro ao excluir usuário.');
+      }
+      setDeletingId(null);
+    }
   const [toast, setToast] = useState(null);
 
   useEffect(() => { fetchUsuarios(); }, []);
@@ -62,25 +82,53 @@ export default function Usuarios() {
     } else {
       // Cria novo usuário via Supabase Admin API (requer service role)
       // Como estamos no cliente, usamos signUp e o trigger cria o profile
-      const { data, error } = await supabase.auth.admin.createUser({
-        email: form.email,
-        password: form.password,
-        email_confirm: true,
-        user_metadata: { full_name: form.full_name, role: form.role },
-      });
+      let userId = null;
+      let userEmail = form.email;
+      let userNome = form.full_name;
+      let userTelefone = form.phone;
+      let userRole = form.role;
+      let userCreated = null;
+      let error = null;
+      if (supabase.auth.admin && supabase.auth.admin.createUser) {
+        const { data, error: adminError } = await supabase.auth.admin.createUser({
+          email: form.email,
+          password: form.password,
+          email_confirm: true,
+          user_metadata: { full_name: form.full_name, role: form.role },
+        });
+        error = adminError;
+        if (data && data.user) {
+          userId = data.user.id;
+          userCreated = data.user.created_at;
+        }
+      }
       if (error) {
         // Fallback: signUp normal — usuário receberá e-mail de confirmação
-        const { error: signUpError } = await supabase.auth.signUp({
+        const { data, error: signUpError } = await supabase.auth.signUp({
           email: form.email,
           password: form.password,
           options: { data: { full_name: form.full_name, role: form.role } },
         });
         setSaving(false);
         if (signUpError) { showToast('error', signUpError.message); return; }
+        if (data && data.user) {
+          userId = data.user.id;
+          userCreated = data.user.created_at;
+        }
         showToast('success', 'Usuário criado! Um e-mail de confirmação foi enviado.');
       } else {
         setSaving(false);
         showToast('success', 'Usuário criado com sucesso!');
+      }
+      // Se for cliente, cria também na tabela clientes
+      if (userId && userRole === 'cliente') {
+        await supabase.from('clientes').insert({
+          user_id: userId,
+          nome: userNome,
+          email: userEmail,
+          telefone: userTelefone,
+          status: 'pendente_doc',
+        });
       }
     }
 
@@ -166,8 +214,13 @@ export default function Usuarios() {
                         ) : roleBadge(u.role)}
                       </td>
                       <td>{new Date(u.created_at).toLocaleDateString('pt-BR')}</td>
-                      <td>
+                      <td style={{display:'flex',gap:8}}>
                         <button className="icon-btn" title="Editar" onClick={() => openEdit(u)}><Edit2 size={16} /></button>
+                        {myProfile?.role === 'admin' && u.id !== myProfile.id && (
+                          <button className="icon-btn" title="Excluir" onClick={() => handleDeleteUser(u)} disabled={deletingId===u.id} style={{color:'#e11d48'}}>
+                            <Trash2 size={16} />
+                          </button>
+                        )}
                       </td>
                     </tr>
                   ))
