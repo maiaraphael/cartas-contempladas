@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { ShieldCheck, Mail, Lock, Eye, EyeOff, AlertCircle, ArrowLeft } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
@@ -18,25 +18,13 @@ export default function Login() {
     e.preventDefault()
     setError('')
     setLoading(true)
-
     try {
       await signIn(email, password)
-      // Aguarda o profile para redirecionar corretamente
-      // O AuthContext vai atualizar o profile, usamos um pequeno delay
-      setTimeout(() => {
-        const from = location.state?.from?.pathname || null
-        if (from) {
-          navigate(from, { replace: true })
-        } else {
-          // Redireciona por role após login
-          navigate('/redirect', { replace: true })
-        }
-      }, 300)
+      // O redirecionamento será feito pelo useEffect abaixo
     } catch (err) {
       const msg = err.message || ''
       if (msg.includes('Invalid login credentials')) {
         setError('E-mail ou senha incorretos.')
-      // Removido: não bloquear login por e-mail não confirmado
       } else {
         setError(msg || 'Erro ao fazer login. Tente novamente.')
       }
@@ -44,6 +32,18 @@ export default function Login() {
       setLoading(false)
     }
   }
+
+  // Redireciona automaticamente quando profile estiver carregado
+  useEffect(() => {
+    if (profile) {
+      const from = location.state?.from?.pathname || null
+      if (from) {
+        navigate(from, { replace: true })
+      } else {
+        navigate('/redirect', { replace: true })
+      }
+    }
+  }, [profile, location.state, navigate])
 
   return (
     <div className="login-page">

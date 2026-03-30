@@ -81,7 +81,6 @@ export default function Usuarios() {
       showToast('success', 'Usuário atualizado com sucesso!');
     } else {
       // Cria novo usuário via Supabase Admin API (requer service role)
-      // Como estamos no cliente, usamos signUp e o trigger cria o profile
       let userId = null;
       let userEmail = form.email;
       let userNome = form.full_name;
@@ -103,19 +102,9 @@ export default function Usuarios() {
         }
       }
       if (error) {
-        // Fallback: signUp normal — usuário receberá e-mail de confirmação
-        const { data, error: signUpError } = await supabase.auth.signUp({
-          email: form.email,
-          password: form.password,
-          options: { data: { full_name: form.full_name, role: form.role } },
-        });
         setSaving(false);
-        if (signUpError) { showToast('error', signUpError.message); return; }
-        if (data && data.user) {
-          userId = data.user.id;
-          userCreated = data.user.created_at;
-        }
-        showToast('success', 'Usuário criado! Um e-mail de confirmação foi enviado.');
+        showToast('error', error.message);
+        return;
       } else {
         setSaving(false);
         showToast('success', 'Usuário criado com sucesso!');
