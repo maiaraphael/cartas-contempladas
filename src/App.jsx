@@ -4,6 +4,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 
 import LandingPage from './pages/LandingPage';
 import BuscaCartas from './pages/BuscaCartas';
+import Faq from './pages/Faq';
 import Login from './pages/Login';
 import RoleRedirect from './pages/RoleRedirect';
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
         </Route>
         <Route path="/busca-cartas" element={<BuscaCartas />} />
+        <Route path="/faq" element={<Faq />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/redirect" element={<RoleRedirect />} />
