@@ -53,12 +53,23 @@ export default function Inventory() {
     if (filtroValor) {
       const v = Number(carta.credito);
       switch (filtroValor) {
-        case '50k': if (!(v <= 50000)) return false; break;
-        case '100k': if (!(v > 50000 && v <= 100000)) return false; break;
-        case '300k': if (!(v > 100000 && v <= 300000)) return false; break;
-        case '500k': if (!(v > 300000 && v <= 500000)) return false; break;
-        case '1m': if (!(v > 500000)) return false; break;
-        default: break;
+        case '50k':
+          if (!(v > 0 && v <= 50000)) return false;
+          break;
+        case '100k':
+          if (!(v > 50000 && v <= 100000)) return false;
+          break;
+        case '300k':
+          if (!(v > 100000 && v <= 300000)) return false;
+          break;
+        case '500k':
+          if (!(v > 300000 && v <= 500000)) return false;
+          break;
+        case '1m':
+          if (!(v > 500000)) return false;
+          break;
+        default:
+          break;
       }
     }
     // Segmento
