@@ -8,6 +8,7 @@ export default function HeroSection() {
   return (
     <section className="hero">
       {/* Animated background blobs */}
+      <br></br>
       <div className="hero-blob blob-1"></div>
       <div className="hero-blob blob-2"></div>
       <div className="hero-blob blob-3"></div>
@@ -17,7 +18,7 @@ export default function HeroSection() {
         <div className="hero-text">
           <div className="hero-topline">
             <span className="hero-topline-bar"></span>
-            <span className="hero-topline-text">Consórcio Contemplado · Brasil</span>
+            <span className="hero-topline-text">AIR Consórcios Contemplados</span>
           </div>
 
           <div className="hero-badge">
@@ -59,9 +60,10 @@ export default function HeroSection() {
               <div className="hero-proof-avatar">JC</div>
               <div className="hero-proof-avatar">RS</div>
               <div className="hero-proof-avatar">PT</div>
+              <br></br>
             </div>
             <div className="hero-proof-text">
-              <strong>+1.400 clientes satisfeitos</strong>
+              <strong>+200 clientes satisfeitos</strong>
               97% de taxa de aprovação
             </div>
           </div>
