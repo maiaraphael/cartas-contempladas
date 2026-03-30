@@ -39,7 +39,7 @@ export default function Footer() {
         <div className="footer-contact">
           <h4 className="footer-title">Contato</h4>
           <ul>
-            <li><MapPin size={18} /> Rua Santa Catarina, 529 - Londrina - PR</li>
+            <li><MapPin size={18} /> Londrina - PR</li>
             <li><Phone size={18} /> (43) 99108-6650</li>
             <li><Mail size={18} /> raphael_maia@live.com</li>
           </ul>
