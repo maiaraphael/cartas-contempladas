@@ -17,7 +17,7 @@ export default function Header() {
       <div className="container header-content">
         <Link to="/" className="logo">
           <ShieldCheck size={30} color="#F97316" />
-          <span>Consorcios <span style={{ color: '#F97316' }}>Contemplados</span></span>
+          <span><span style={{ color: '#F97316' }}>AIR</span>Consorcios <span style={{ color: '#F97316' }}>Contemplados</span></span>
         </Link>
         
         {/* Nav Desktop */}
