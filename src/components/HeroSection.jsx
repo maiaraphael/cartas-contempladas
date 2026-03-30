@@ -96,7 +96,8 @@ export default function HeroSection() {
               <label>Valor do Crédito Desejado</label>
               <select defaultValue="">
                 <option value="" disabled>Selecione um valor</option>
-                <option value="100k">Até R$ 100.000</option>
+                <option value="50k">Até R$ 50.000</option>
+                <option value="100k">R$ 50.000 a R$ 100.000</option>
                 <option value="300k">R$ 100.000 a R$ 300.000</option>
                 <option value="500k">R$ 300.000 a R$ 500.000</option>
                 <option value="1m">Acima de R$ 500.000</option>
