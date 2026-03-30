@@ -31,10 +31,10 @@ export default function AdminLayout() {
         <div className="sidebar-header">
           <Link to="/" className="logo">
             <ShieldCheck size={28} color="var(--brand-primary)" />
-            <span>Painel<span style={{color: 'var(--brand-primary)'}}>Admin</span></span>
+            <span>Painel<span style={{ color: 'var(--brand-primary)' }}>Admin</span></span>
           </Link>
         </div>
-        
+
         <nav className="sidebar-nav">
           <ul>
             <li>
@@ -71,9 +71,9 @@ export default function AdminLayout() {
             )}
           </ul>
         </nav>
-        
+
         <div className="sidebar-footer">
-          <button className="nav-item" onClick={handleLogout} style={{background:'none',border:'none',cursor:'pointer',width:'100%',textAlign:'left'}}>
+          <button className="nav-item" onClick={handleLogout} style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}>
             <LogOut size={20} /> Sair
           </button>
         </div>
@@ -86,13 +86,13 @@ export default function AdminLayout() {
           </div>
           <div className="admin-profile">
             <div className="avatar">{initials}</div>
-            <div style={{display:'flex',flexDirection:'column',lineHeight:1.2}}>
-              <span style={{fontWeight:600,fontSize:'0.875rem'}}>{profile?.full_name || 'Usuário'}</span>
-              <span style={{fontSize:'0.75rem',color:'#64748b'}}>{roleLabel}</span>
+            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
+              <span style={{ fontWeight: 600, fontSize: '0.875rem' }}>{profile?.full_name || 'Usuário'}</span>
+              <span style={{ fontSize: '0.75rem', color: '#64748b' }}>{roleLabel}</span>
             </div>
           </div>
         </header>
-        
+
         <section className="admin-content">
           <Outlet />
         </section>
