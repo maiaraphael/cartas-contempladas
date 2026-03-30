@@ -1,5 +1,17 @@
 ﻿import { useState, useEffect } from 'react';
-import { Search, FileSignature, X } from 'lucide-react';
+import { Search, FileSignature, X, Trash2 } from 'lucide-react';
+  const [deletingId, setDeletingId] = useState(null);
+  // Excluir cliente
+  async function handleDeleteCliente(cliente) {
+    if (!window.confirm(`Tem certeza que deseja excluir o cliente ${cliente.nome}? Essa ação não pode ser desfeita.`)) return;
+    setDeletingId(cliente.id);
+    const { error } = await supabase.from('clientes').delete().eq('id', cliente.id);
+    if (!error) {
+      setSelected(null);
+      fetchClientes();
+    }
+    setDeletingId(null);
+  }
 import { supabase } from '../../lib/supabase';
 import './GestaoClientes.css';
 
@@ -142,9 +154,12 @@ export default function GestaoClientes() {
                     <td><p className="date-text">{new Date(cliente.created_at).toLocaleDateString('pt-BR')}</p></td>
                     <td>{getStatusBadge(cliente.status)}</td>
                     <td>
-                      <div className="action-buttons">
+                      <div className="action-buttons" style={{display:'flex',gap:8}}>
                         <button className="icon-btn" title="Ver Detalhes / Alterar Status" onClick={() => setSelected(cliente)}>
                           <FileSignature size={18} />
+                        </button>
+                        <button className="icon-btn" title="Excluir Cliente" onClick={() => handleDeleteCliente(cliente)} disabled={deletingId===cliente.id} style={{color:'#e11d48'}}>
+                          <Trash2 size={18} />
                         </button>
                       </div>
                     </td>
@@ -167,9 +182,14 @@ export default function GestaoClientes() {
       {selected && (
         <div className="modal-overlay" onClick={() => setSelected(null)}>
           <div className="modal-box" onClick={e => e.stopPropagation()}>
-            <div className="modal-header">
+            <div className="modal-header" style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:8}}>
               <h3>Detalhes do Cliente</h3>
-              <button className="icon-btn" onClick={() => setSelected(null)}><X size={20} /></button>
+              <div style={{display:'flex',gap:8}}>
+                <button className="icon-btn" title="Excluir Cliente" onClick={() => handleDeleteCliente(selected)} disabled={deletingId===selected?.id} style={{color:'#e11d48'}}>
+                  <Trash2 size={20} />
+                </button>
+                <button className="icon-btn" onClick={() => setSelected(null)}><X size={20} /></button>
+              </div>
             </div>
             <div className="modal-body">
               <p><strong>Nome:</strong> {selected.nome}</p>
