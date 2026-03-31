@@ -3,7 +3,7 @@ import './StatsSection.css';
 
 const stats = [
   { value: 'R$ 10M+', label: 'Em créditos transferidos', icon: <DollarSign size={28} /> },
-  { value: '200+', label: 'Clientes atendidos', icon: <Users size={28} /> },
+  { value: '50+', label: 'Clientes atendidos', icon: <Users size={28} /> },
   { value: '97%', label: 'Taxa de aprovação', icon: <CheckCircle2 size={28} /> },
   { value: '< 15 dias', label: 'Tempo médio de transferência', icon: <Zap size={28} /> },
 ];
