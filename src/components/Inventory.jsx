@@ -6,7 +6,7 @@ import './Inventory.css';
 const formatCurrency = v =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
 
-const WHATSAPP_NUMBER = '5511999999999'; // Altere para o numero real
+const WHATSAPP_NUMBER = '5543991086650'; // Altere para o numero real
 
 export default function Inventory({ filtros = {}, enableFiltros = false }) {
   const [ordenacao, setOrdenacao] = useState('menor-entrada');
