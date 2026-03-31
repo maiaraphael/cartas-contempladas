@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ShieldCheck, UserCircle, Menu, X } from 'lucide-react';
 import './Header.css';
 
-const WHATSAPP_NUMBER = '5511999999999'; // Altere para o número real
+const WHATSAPP_NUMBER = '5543991086650'; // Altere para o número real
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,7 +17,7 @@ export default function Header() {
       <div className="container header-content">
         <Link to="/" className="logo">
           <ShieldCheck size={30} color="#F97316" />
-          <span><span style={{ color: '#F97316' }}>AIR</span>Consorcios <span style={{ color: '#F97316' }}>Contemplados</span></span>
+          <span><span style={{ color: '#F97316' }}>AIR</span> Consorcios <span style={{ color: '#F97316' }}>Contemplados</span></span>
         </Link>
         
         {/* Nav Desktop */}

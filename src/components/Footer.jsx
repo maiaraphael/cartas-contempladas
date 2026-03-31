@@ -9,6 +9,7 @@ export default function Footer() {
         <div className="footer-brand">
           <Link to="/" className="logo footer-logo">
             <ShieldCheck size={28} color="var(--brand-primary)" />
+            <span style={{ color: 'var(--brand-primary)' }}>AIR </span>
             <span>Consorcios<span style={{ color: 'var(--brand-primary)' }}> Contemplados</span></span>
           </Link>
           <p className="footer-text">
