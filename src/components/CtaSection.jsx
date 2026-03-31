@@ -24,7 +24,7 @@ export default function CtaSection() {
               Ver Cartas Disponíveis <ArrowRight size={18} />
             </a>
             <a
-              href="https://wa.me/5500000000000"
+              href="https://wa.me/5543991086650"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cta-whatsapp"
