@@ -24,12 +24,17 @@ export default function Inventory({ filtros = {}, enableFiltros = false }) {
 
   useEffect(() => {
     async function fetchCartas() {
-      const { data } = await supabase
-        .from('cartas')
-        .select('*')
-        .eq('status', 'disponivel');
-      setCartas(data || []);
-      setLoading(false);
+      try {
+        const { data } = await supabase
+          .from('cartas')
+          .select('*')
+          .eq('status', 'disponivel');
+        setCartas(data || []);
+      } catch {
+        setCartas([]);
+      } finally {
+        setLoading(false);
+      }
     }
     fetchCartas();
   }, []);
