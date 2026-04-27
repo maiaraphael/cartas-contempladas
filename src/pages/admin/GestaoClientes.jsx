@@ -1,17 +1,5 @@
 ﻿import { useState, useEffect } from 'react';
 import { Search, FileSignature, X, Trash2 } from 'lucide-react';
-  const [deletingId, setDeletingId] = useState(null);
-  // Excluir cliente
-  async function handleDeleteCliente(cliente) {
-    if (!window.confirm(`Tem certeza que deseja excluir o cliente ${cliente.nome}? Essa ação não pode ser desfeita.`)) return;
-    setDeletingId(cliente.id);
-    const { error } = await supabase.from('clientes').delete().eq('id', cliente.id);
-    if (!error) {
-      setSelected(null);
-      fetchClientes();
-    }
-    setDeletingId(null);
-  }
 import { supabase } from '../../lib/supabase';
 import './GestaoClientes.css';
 
@@ -26,6 +14,7 @@ export default function GestaoClientes() {
   const [total, setTotal] = useState(0);
   const [selected, setSelected] = useState(null);
   const [updatingStatus, setUpdatingStatus] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
 
   useEffect(() => {
     fetchClientes();
@@ -65,6 +54,17 @@ export default function GestaoClientes() {
       if (selected?.id === clienteId) setSelected(s => ({ ...s, status: newStatus }));
     }
     setUpdatingStatus(false);
+  }
+
+  async function handleDeleteCliente(cliente) {
+    if (!window.confirm(`Tem certeza que deseja excluir o cliente ${cliente.nome}? Essa ação não pode ser desfeita.`)) return;
+    setDeletingId(cliente.id);
+    const { error } = await supabase.from('clientes').delete().eq('id', cliente.id);
+    if (!error) {
+      setSelected(null);
+      fetchClientes();
+    }
+    setDeletingId(null);
   }
 
   const getStatusBadge = (status) => {
