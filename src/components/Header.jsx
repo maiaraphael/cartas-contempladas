@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, UserCircle, Menu, X } from 'lucide-react';
+import { useSmoothScroll } from '../hooks/useSmoothScroll';
 import './Header.css';
 
 const WHATSAPP_NUMBER = '5543991086650'; // Altere para o número real
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollToSection } = useSmoothScroll(80);
 
   function toggleMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  }
+
+  function handleNavClick(e, href) {
+    scrollToSection(e, href);
+    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
   }
 
   return (
@@ -23,9 +30,9 @@ export default function Header() {
         {/* Nav Desktop */}
         <nav className="nav desktop-only">
           <ul>
-            <li><a href="#cartas">Cartas Contempladas</a></li>
-            <li><a href="#como-funciona">Como Funciona</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="#cartas" onClick={e => handleNavClick(e, '#cartas')}>Cartas Contempladas</a></li>
+            <li><a href="#como-funciona" onClick={e => handleNavClick(e, '#como-funciona')}>Como Funciona</a></li>
+            <li><a href="#contato" onClick={e => handleNavClick(e, '#contato')}>Contato</a></li>
           </ul>
         </nav>
         
@@ -54,9 +61,9 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
         <nav className="mobile-nav">
-          <a href="#cartas" onClick={toggleMenu}>Cartas Contempladas</a>
-          <a href="#como-funciona" onClick={toggleMenu}>Como Funciona</a>
-          <a href="#contato" onClick={toggleMenu}>Contato</a>
+          <a href="#cartas" onClick={e => handleNavClick(e, '#cartas')}>Cartas Contempladas</a>
+          <a href="#como-funciona" onClick={e => handleNavClick(e, '#como-funciona')}>Como Funciona</a>
+          <a href="#contato" onClick={e => handleNavClick(e, '#contato')}>Contato</a>
         </nav>
         
         <div className="mobile-actions">
