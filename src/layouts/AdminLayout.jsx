@@ -73,8 +73,15 @@ export default function AdminLayout() {
         </nav>
 
         <div className="sidebar-footer">
+          <div className="sidebar-footer-user">
+            <div className="avatar">{initials}</div>
+            <div className="sidebar-footer-user-info">
+              <span className="sidebar-footer-user-name">{profile?.full_name || 'Usuário'}</span>
+              <span className="sidebar-footer-user-role">{roleLabel}</span>
+            </div>
+          </div>
           <button className="nav-item" onClick={handleLogout} style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}>
-            <LogOut size={20} /> Sair
+            <LogOut size={18} /> Sair da conta
           </button>
         </div>
       </aside>
@@ -83,12 +90,15 @@ export default function AdminLayout() {
         <header className="admin-topbar">
           <div className="topbar-info">
             <h2>Portal do Administrador</h2>
+            <p>Bem-vindo de volta, {profile?.full_name?.split(' ')[0] || 'usuário'}</p>
           </div>
           <div className="admin-profile">
-            <div className="avatar">{initials}</div>
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
-              <span style={{ fontWeight: 600, fontSize: '0.875rem' }}>{profile?.full_name || 'Usuário'}</span>
-              <span style={{ fontSize: '0.75rem', color: '#64748b' }}>{roleLabel}</span>
+            <div className="admin-profile-badge">
+              <div className="avatar">{initials}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.3 }}>
+                <span style={{ fontWeight: 600, fontSize: '0.8125rem', color: '#0d1117' }}>{profile?.full_name || 'Usuário'}</span>
+                <span style={{ fontSize: '0.6875rem', color: '#94a3b8' }}>{roleLabel}</span>
+              </div>
             </div>
           </div>
         </header>
