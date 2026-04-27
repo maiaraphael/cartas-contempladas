@@ -1,22 +1,17 @@
 import { useState } from 'react';
-import { Search, ArrowRight, CheckCircle, ShieldCheck } from 'lucide-react';
+import { Search, ArrowRight, CheckCircle, ShieldCheck, Star } from 'lucide-react';
 import './HeroSection.css';
 
 export default function HeroSection() {
   const [activeTab, setActiveTab] = useState('imoveis');
-
   const [valorCredito, setValorCredito] = useState("");
   const [administradora, setAdministradora] = useState("uniao");
-
-  // Segmento: imoveis ou veiculos
-  // Usa activeTab
 
   function handleBuscarCartas() {
     if (!valorCredito) {
       alert("Selecione um valor de crédito desejado.");
       return;
     }
-    // Monta query string com todos filtros
     const params = new URLSearchParams();
     params.set('valor', valorCredito);
     params.set('segmento', activeTab);
@@ -26,73 +21,75 @@ export default function HeroSection() {
 
   return (
     <section className="hero">
-      {/* Animated background blobs */}
-      <br></br>
       <div className="hero-blob blob-1"></div>
       <div className="hero-blob blob-2"></div>
       <div className="hero-blob blob-3"></div>
 
+      {/* Grid line decorations */}
+      <div className="hero-grid-lines" aria-hidden="true"></div>
+
       <div className="container hero-inner">
         {/* Left: Text Content */}
         <div className="hero-text">
+
           <div className="hero-topline">
             <span className="hero-topline-bar"></span>
             <span className="hero-topline-text">AIR Consórcios Contemplados</span>
           </div>
 
-          <div className="hero-badge">
-            <ShieldCheck size={14} />
-            <span>Processo 100% Jurídico e Transparente</span>
-          </div>
-
           <h1 className="hero-title">
-            Seu <span className="highlight">Patrimônio</span>{' '}
-            sem Juros.<br />Com Segurança.
+            Seu Patrimônio<br />
+            sem <span className="highlight">Juros</span>.<br />
+            Com <span className="highlight">Segurança</span>.
           </h1>
-
-          <div className="hero-divider"></div>
 
           <p className="hero-subtitle">
             Adquira cartas de consórcio contempladas com transferência
-            jurídica garantida. Economize até 40% em relação ao
-            financiamento tradicional.
+            jurídica garantida. Economize até <strong>40%</strong> em relação ao financiamento tradicional.
           </p>
 
           <ul className="hero-checks">
-            <li><CheckCircle size={17} /> Sem juros abusivos de financiamento</li>
-            <li><CheckCircle size={17} /> Transferência jurídica garantida</li>
-            <li><CheckCircle size={17} /> Crédito disponível imediatamente</li>
+            <li><CheckCircle size={16} /> Sem juros abusivos de financiamento</li>
+            <li><CheckCircle size={16} /> Transferência jurídica 100% garantida</li>
+            <li><CheckCircle size={16} /> Crédito disponível imediatamente</li>
           </ul>
 
           <div className="hero-actions">
-            <a href="#cartas" className="btn btn-hero-primary">
-              Ver Cartas Disponíveis <ArrowRight size={18} />
+            <a href="#cartas" className="btn-hero-primary">
+              Ver Cartas Disponíveis <ArrowRight size={17} />
             </a>
-            <a href="#como-funciona" className="btn btn-hero-outline">
+            <a href="#como-funciona" className="btn-hero-outline">
               Como Funciona
             </a>
           </div>
 
           <div className="hero-proof">
             <div className="hero-proof-avatars">
-              <div className="hero-proof-avatar">MA</div>
-              <div className="hero-proof-avatar">JC</div>
-              <div className="hero-proof-avatar">RS</div>
-              <div className="hero-proof-avatar">PT</div>
-              <br></br>
+              {['MA','JC','RS','PT'].map(i => <div key={i} className="hero-proof-avatar">{i}</div>)}
             </div>
             <div className="hero-proof-text">
               <strong>+200 clientes satisfeitos</strong>
-              97% de taxa de aprovação
+              <span>97% de taxa de aprovação</span>
+            </div>
+            <div className="hero-proof-rating">
+              <div className="hero-proof-stars">
+                {[1,2,3,4,5].map(i => <Star key={i} size={13} fill="#F97316" color="#F97316" />)}
+              </div>
+              <span>5.0</span>
             </div>
           </div>
         </div>
 
         {/* Right: Search Card */}
         <div className="hero-card">
+          <div className="hero-card-badge">
+            <ShieldCheck size={14} color="#22c55e" />
+            Consulta gratuita e sem compromisso
+          </div>
+
           <div className="hero-card-header">
-            <h3>Buscar Carta Contemplada</h3>
-            <p>Consulta gratuita e sem compromisso</p>
+            <h3>Encontre sua Carta</h3>
+            <p>Filtre pelo valor e segmento ideal</p>
           </div>
 
           <div className="search-tabs">
@@ -129,16 +126,32 @@ export default function HeroSection() {
                 <option value="outro">Outra Administradora</option>
               </select>
             </div>
-            {/* Segmento já está nos tabs (activeTab) */}
-            <button type="button" className="btn btn-hero-primary search-btn" onClick={handleBuscarCartas}>
-              <Search size={18} />
+            <button type="button" className="search-btn" onClick={handleBuscarCartas}>
+              <Search size={17} />
               Buscar Cartas Agora
             </button>
           </form>
 
           <div className="card-footer-note">
-            <CheckCircle size={13} color="#22c55e" />
+            <CheckCircle size={12} color="#22c55e" />
             <span>Atendimento personalizado em até 2h</span>
+          </div>
+
+          <div className="hero-card-stats">
+            <div className="hero-card-stat">
+              <span className="hero-card-stat-val">R$10M+</span>
+              <span className="hero-card-stat-lbl">em créditos</span>
+            </div>
+            <div className="hero-card-stat-divider"></div>
+            <div className="hero-card-stat">
+              <span className="hero-card-stat-val">50+</span>
+              <span className="hero-card-stat-lbl">cartas ativas</span>
+            </div>
+            <div className="hero-card-stat-divider"></div>
+            <div className="hero-card-stat">
+              <span className="hero-card-stat-val">15d</span>
+              <span className="hero-card-stat-lbl">tempo médio</span>
+            </div>
           </div>
         </div>
       </div>
