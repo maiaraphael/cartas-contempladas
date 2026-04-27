@@ -28,7 +28,7 @@ export default function Testimonials() {
   return (
     <section className="testimonials section">
       <div className="container">
-        <div className="section-header">
+        <div className="section-header testimonials-header">
           <span className="section-eyebrow">Quem já transformou</span>
           <h2 className="section-heading">Clientes que <span className="heading-accent">Realizaram Sonhos</span></h2>
         </div>
